@@ -3,7 +3,7 @@
   <Identity Name="6c8d1378-1b2b-4c53-b6c9-613970a8eaa2" Publisher="CN=Terry Kolody" Version="1.0.0.2" />
   <Properties>
     <DisplayName>TVOmote</DisplayName>
-    <PublisherDisplayName>Terry Kolody</PublisherDisplayName>
+    <PublisherDisplayName>TMKDEV LLC</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Prerequisites>

@@ -13,7 +13,9 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using Tivomote.Common;
+using Windows.UI.ApplicationSettings;
+using Windows.UI.Popups;
+using Windows.System;
 
 // The Basic Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234237
 
@@ -24,7 +26,6 @@ namespace Tivomote
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
         private NavigationHelper navigationHelper;
         private ObservableDictionary defaultViewModel = new ObservableDictionary();
 
@@ -142,5 +143,8 @@ namespace Tivomote
                 Windows.Storage.ApplicationData.Current.RoamingSettings;
             roamingSettings.Values["TivoIP"] = tivoIP.Text;
         }
+
+        
+
     }
 }

@@ -14,6 +14,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Windows.UI.ApplicationSettings;
+using Windows.UI.Popups;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
@@ -32,6 +34,8 @@ namespace Tivomote
         {
             this.InitializeComponent();
             this.Suspending += OnSuspending;
+
+
         }
 
         /// <summary>
@@ -88,6 +92,9 @@ namespace Tivomote
                 await Tivomote.Common.SuspensionManager.RestoreAsync();
             }
 
+            SettingsPane.GetForCurrentView().CommandsRequested += SettingCharmManager_CommandsRequested;
+
+
             // Ensure the current window is active
             Window.Current.Activate();
         }
@@ -117,5 +124,17 @@ namespace Tivomote
 
             deferral.Complete();
         }
+
+        private void SettingCharmManager_CommandsRequested(SettingsPane sender, SettingsPaneCommandsRequestedEventArgs args)
+        {
+            args.Request.ApplicationCommands.Add(new SettingsCommand("privacypolicy", "Privacy policy", OpenPrivacyPolicy));
+        }
+
+        private async void OpenPrivacyPolicy(IUICommand command)
+        {
+            Uri uri = new Uri("http://tmkdev.homelinux.net/tmkdev/tmkdev-opensource-privacy.html");
+            await Windows.System.Launcher.LaunchUriAsync(uri);
+        }
+
     }
 }
